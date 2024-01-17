@@ -1,1 +1,5 @@
-"*.exe"
+*.exe
+.vscode/
+std_lib_facilities.h
+.code-workspace
+
