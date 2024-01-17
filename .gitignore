@@ -1,5 +1,5 @@
 *.exe
 .vscode/
 std_lib_facilities.h
-.code-workspace
+stroustrup_2015.code-workspace
 
