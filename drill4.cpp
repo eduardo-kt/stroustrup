@@ -3,44 +3,42 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <limits>
+#include <cmath>
 
 
-// adicionar while loop com regra de saída
+
 
 
 int main() {
-    double value1, value2; // change values from int to double
+    double value, smallest = std::numeric_limits<double>::quiet_NaN(), largest;
     std::string chave;
-    while (true) {
-        std::cout<<"Enter the first value: ";
-        std::cin>> chave;
-        if (chave == "|") {
-            break;
-        }
-        std::stringstream(chave) >> value1;
-        std::cout<<"\nEnter the second value: ";
-        std::cin>> chave;
-        if (chave == "|") {
-            break;
-        }
-        std::stringstream(chave) >> value2;
 
-        // value comparison
-        if (value1 > value2){
-            std::cout<<"the smaller value is: "<<value2<<"\nthe larger value is: "<<value1;
-            if (value1/value2 <= 1.01) {         // relative comparison
-                std::cout<<"\nBut they are almost the same\n";
-            }            
+    while (true) {
+        std::cout<<"Enter a value: ";
+        std::cin>> chave;
+        if (chave == "|") {
+            break;
         }
-        else if (value1 < value2) {
-            std::cout<<"the smaller value is: "<<value1<<"\nthe larger value is: "<<value2;
-            if (value2/value1 <= 1.01) {         // relative comparison
-                std::cout<<"\nBut they are almost the same\n";
-            }            
-        }        
-       
-        else {std::cout<<"The values have equal value";}
-        
+
+        std::stringstream(chave) >> value;
+
+        if (std::isnan(smallest)){
+            smallest = value;
+            largest = value;
+
+        }
+
+        if (value < smallest) {
+            smallest = value;
+
+        }
+        else if (value > largest) {
+            largest = value;
+        }
+
+        std::cout<<"\nThe smallest so far: "<<smallest<<"\nThe largest so far: "<<largest<<"\n";
+                
     }
 }
     
